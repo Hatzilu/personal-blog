@@ -17,19 +17,24 @@
 			<button type="submit">submit</button>
 		</form>
 		<output id="result" for="post_form">
-			<pre><code id="json">{}</code></pre>
+			<pre><code id="json"></code></pre>
 		</output>
 
 		<script>
 			const form = document.getElementById('post_form');
+
+			let jsondata = {};
+
 			form.oninput = (e) => {
 				const data = new FormData(e.target.form);
-				console.log({ data });
 				const json = document.getElementById('json');
+				if (json.innerHTML) {
+					jsondata[e.target.name] = e.target.value;
+				} else {
+					data.forEach((value, key) => (jsondata[key] = value));
+				}
 
-				var object = {};
-				data.forEach((value, key) => (object[key] = value));
-				json.innerHTML = JSON.stringify(object, null, 2);
+				json.innerHTML = JSON.stringify(jsondata, null, 2);
 			};
 			form.onsubmit = (e) => {
 				e.preventDefault();
