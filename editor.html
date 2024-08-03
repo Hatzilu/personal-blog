@@ -5,14 +5,45 @@
 	</head>
 	<body>
 		<h1>post editor</h1>
-		<form>
+		<form style="display: flex; flex-direction: column" id="post_form" oninput="onInput()">
+			<label for="title">Author name</label>
+			<input required name="author.name" type="text" />
 			<label for="title">Title</label>
 			<input required name="title" type="text" />
 			<label for="body">Body</label>
-			<textarea name="body">
-                text
-                </textarea
-			>
+			<textarea name="body" rows="5" cols="33">text</textarea>
 		</form>
+		<output id="result" for="post_form">
+			<pre><code id="json">{}</code></pre>
+		</output>
+
+		<button name="copy" onclick="copyToClipBoard()">copy text</button>
+		<script>
+			function copyToClipBoard() {
+				const json = document.getElementById('json');
+				if (!json) return;
+
+				// Copy the text inside the text field
+				navigator.clipboard.writeText(json.innerHTML);
+
+				// Alert the copied text
+				alert('Copied the text: ' + json.innerHTML);
+			}
+			const form = document.getElementById('post_form');
+			form.oninput = (e) => {
+				const data = new FormData(e.target.form);
+				console.log({ data });
+				const json = document.getElementById('json');
+
+				var object = {};
+				data.forEach((value, key) => (object[key] = value));
+				json.innerHTML = JSON.stringify(object, null, 2);
+			};
+			form.onsubmit = (e) => {
+				e.preventDefault();
+				const data = new FormData(e.target);
+				console.log();
+			};
+		</script>
 	</body>
 </html>
