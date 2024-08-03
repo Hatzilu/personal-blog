@@ -8,27 +8,19 @@
 		<form style="display: flex; flex-direction: column" id="post_form" oninput="onInput()">
 			<label for="title">Author name</label>
 			<input required name="author.name" type="text" />
+			<label for="title">Author website/href</label>
+			<input required name="author.href" type="url" />
 			<label for="title">Title</label>
 			<input required name="title" type="text" />
 			<label for="body">Body</label>
-			<textarea name="body" rows="5" cols="33">text</textarea>
+			<textarea required name="body" rows="5" cols="33">text</textarea>
+			<button type="submit">submit</button>
 		</form>
 		<output id="result" for="post_form">
 			<pre><code id="json">{}</code></pre>
 		</output>
 
-		<button name="copy" onclick="copyToClipBoard()">copy text</button>
 		<script>
-			function copyToClipBoard() {
-				const json = document.getElementById('json');
-				if (!json) return;
-
-				// Copy the text inside the text field
-				navigator.clipboard.writeText(json.innerHTML);
-
-				// Alert the copied text
-				alert('Copied the text: ' + json.innerHTML);
-			}
 			const form = document.getElementById('post_form');
 			form.oninput = (e) => {
 				const data = new FormData(e.target.form);
@@ -42,7 +34,11 @@
 			form.onsubmit = (e) => {
 				e.preventDefault();
 				const data = new FormData(e.target);
-				console.log();
+				// Copy the text inside the text field
+				navigator.clipboard.writeText(json.innerHTML);
+
+				// Alert the copied text
+				alert('JSON saved to clipboard: \n\n' + json.innerHTML);
 			};
 		</script>
 	</body>
