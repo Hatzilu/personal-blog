@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Hatzilu - Main</title>
+
+		<script src="./index.js"></script>
+		<script src="./getPosts.js" type="module"></script>
+	</head>
+	<body>
+		<header>
+			<h1>hi, welcome to my blog</h1>
+		</header>
+		<p>
+			Hi, i'm a front-end dev and i decided to create this blog to talk about things i find interesting.
+		</p>
+
+		<nav>
+			<ul>
+				<li>
+					<a href="/editor.html">Editor</a>
+				</li>
+			</ul>
+		</nav>
+
+		<main id="posts">
+			<template id="blogPostTemplate">
+				<article>
+					<h1 id="title"></h1>
+					<div id="content"></div>
+					<footer>
+						<address>Written by<a id="author" href="#"></a></address>
+						- <time id="createdTime"></time>
+					</footer>
+				</article>
+			</template>
+
+			<p id="loading">loading...</p>
+		</main>
+	</body>
+</html>

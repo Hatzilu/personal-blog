@@ -1,0 +1,20 @@
+[
+	{
+		"author": { "name": "Hatzilu", "href": "https://github.com/Hatzilu" },
+		"title": "Post 1",
+		"body": "<p>content</p>",
+		"timeCreated": "2024-08-03T12:01:49.158Z"
+	},
+	{
+		"author": { "name": "Hatzilu", "href": "https://github.com/Hatzilu" },
+		"title": "Post 2",
+		"body": "<p>content</p>",
+		"timeCreated": "2024-08-03T12:01:49.158Z"
+	},
+	{
+		"author": { "name": "Hatzilu", "href": "https://github.com/Hatzilu" },
+		"title": "Post 3",
+		"body": "<p>content</p>",
+		"timeCreated": "2024-08-03T12:01:49.158Z"
+	}
+]
